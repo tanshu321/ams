@@ -1,0 +1,25 @@
+equipment_list:
+    path: /api/v1/equipments/{search}
+    methods: [GET]
+    defaults:  { _controller: App\Controller\EquipmentController:indexAction, search: 1 }
+    requirements:
+        search: '^[a-zA-Z0-9_.-]*$'
+    
+equipment_create:
+    path: /api/v1/equipments
+    controller: App\Controller\EquipmentController:createAction
+    methods: [POST]
+
+equipment_update:
+    path: /api/v1/equipments/{equipmentId}/update
+    controller: App\Controller\EquipmentController:updateAction
+    methods: [PATCH]
+    requirements:
+        equipmentId: '\d+'
+
+equipment_delete:
+  path: /api/v1/equipments/{equipmentId}/delete
+  controller: App\Controller\EquipmentController:deleteAction
+  methods: [DELETE]
+  requirements:
+    equipmentId: '\d+'
